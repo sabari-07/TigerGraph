@@ -1,0 +1,125 @@
+{
+  "rag": {
+    "pipeline": "rag",
+    "n": 100,
+    "accuracy": 0.17,
+    "correct": 17,
+    "avg_completeness": 0.2647,
+    "avg_tokens": 1145.9,
+    "total_tokens": 114588,
+    "avg_steps": 2.0,
+    "avg_chunks": 5.0,
+    "avg_latency_s": 6.5223,
+    "strategy_changes": 0,
+    "accuracy_per_1k_tokens": 0.1484,
+    "by_qtype": {
+      "aggregation": {
+        "correct": 2,
+        "n": 21,
+        "accuracy": 0.095
+      },
+      "lookup": {
+        "correct": 9,
+        "n": 19,
+        "accuracy": 0.474
+      },
+      "multi_hop": {
+        "correct": 1,
+        "n": 28,
+        "accuracy": 0.036
+      },
+      "superlative": {
+        "correct": 1,
+        "n": 10,
+        "accuracy": 0.1
+      },
+      "temporal": {
+        "correct": 4,
+        "n": 22,
+        "accuracy": 0.182
+      }
+    }
+  },
+  "graphrag": {
+    "pipeline": "graphrag",
+    "n": 100,
+    "accuracy": 0.95,
+    "correct": 95,
+    "avg_completeness": 0.6767,
+    "avg_tokens": 911.5,
+    "total_tokens": 91151,
+    "avg_steps": 4.0,
+    "avg_chunks": 4.79,
+    "avg_latency_s": 11.0823,
+    "strategy_changes": 0,
+    "accuracy_per_1k_tokens": 1.0422,
+    "by_qtype": {
+      "aggregation": {
+        "correct": 21,
+        "n": 21,
+        "accuracy": 1.0
+      },
+      "lookup": {
+        "correct": 19,
+        "n": 19,
+        "accuracy": 1.0
+      },
+      "multi_hop": {
+        "correct": 24,
+        "n": 28,
+        "accuracy": 0.857
+      },
+      "superlative": {
+        "correct": 10,
+        "n": 10,
+        "accuracy": 1.0
+      },
+      "temporal": {
+        "correct": 21,
+        "n": 22,
+        "accuracy": 0.955
+      }
+    }
+  },
+  "agentic": {
+    "pipeline": "agentic",
+    "n": 100,
+    "accuracy": 0.99,
+    "correct": 99,
+    "avg_completeness": 0.6748,
+    "avg_tokens": 463.7,
+    "total_tokens": 46372,
+    "avg_steps": 3.06,
+    "avg_chunks": 2.27,
+    "avg_latency_s": 14.0037,
+    "strategy_changes": 4,
+    "accuracy_per_1k_tokens": 2.1349,
+    "by_qtype": {
+      "aggregation": {
+        "correct": 21,
+        "n": 21,
+        "accuracy": 1.0
+      },
+      "lookup": {
+        "correct": 19,
+        "n": 19,
+        "accuracy": 1.0
+      },
+      "multi_hop": {
+        "correct": 27,
+        "n": 28,
+        "accuracy": 0.964
+      },
+      "superlative": {
+        "correct": 10,
+        "n": 10,
+        "accuracy": 1.0
+      },
+      "temporal": {
+        "correct": 22,
+        "n": 22,
+        "accuracy": 1.0
+      }
+    }
+  }
+}
