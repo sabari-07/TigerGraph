@@ -1,0 +1,25 @@
+# Env / secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Artifacts (large / generated)
+artifacts/
+*.index
+*.npy
+*.faiss
+embeddings/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Keep dataset in repo but ignore large derived caches
+graph_store/

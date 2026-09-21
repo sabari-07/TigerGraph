@@ -1,0 +1,14 @@
+// STEP 3 — add a 384-dim vector attribute to Event (TigerGraph Vector DB).
+// Matches sentence-transformers/all-MiniLM-L6-v2 (384-dim), COSINE metric.
+// Run AFTER the graph is loaded (step 2 = scripts/tigergraph_load.py).
+//
+// Note: vector schema changes may need the -N flag if queries are installed.
+// The programmatic path (scripts/tigergraph_add_vector_attr.py) handles this.
+
+USE GRAPH AgenticGraphRAG
+
+CREATE SCHEMA_CHANGE JOB add_event_embedding FOR GRAPH AgenticGraphRAG {
+  ALTER VERTEX Event ADD VECTOR ATTRIBUTE emb(DIMENSION=384, METRIC="COSINE");
+}
+
+RUN SCHEMA_CHANGE JOB add_event_embedding

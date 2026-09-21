@@ -1,0 +1,18 @@
+# Core (always required)
+numpy>=1.26.0
+tiktoken>=0.6.0
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+
+# Embeddings (local, free) - used by all pipelines for similarity search
+sentence-transformers>=2.6.0
+
+# LLM client (OpenAI-compatible: works with Groq, OpenRouter, Ollama, OpenAI)
+openai>=1.30.0
+
+# TigerGraph Savanna backend (graph + vector DB). Only needed for
+# GRAPH_BACKEND=tigergraph; the offline 'local' mode does not require it.
+pyTigerGraph>=1.6.0
+
+# Tests
+pytest>=8.0.0

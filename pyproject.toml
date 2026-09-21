@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-graphrag"
+version = "0.1.0"
+description = "Agentic GraphRAG on TigerGraph: three-pipeline benchmark (RAG, GraphRAG, Agentic)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26.0",
+    "tiktoken>=0.6.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.66.0",
+    "sentence-transformers>=2.6.0",
+    "openai>=1.30.0",
+]
+
+[project.optional-dependencies]
+tigergraph = ["pyTigerGraph>=1.6.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+agentic-graphrag = "agentic_graphrag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

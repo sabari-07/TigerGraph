@@ -1,0 +1,16 @@
+// STEP 5 — install the top-k vector search over Event.emb.
+// HNSW approximate nearest-neighbor, cosine similarity, runs inside GSQL so it
+// can be composed with graph traversal (hybrid graph + vector).
+// The agent's similarity_search tool calls this via runInstalledQuery.
+// Run AFTER embeddings are loaded (step 4 = scripts/tigergraph_load_vectors.py).
+
+USE GRAPH AgenticGraphRAG
+
+CREATE OR REPLACE QUERY event_vector_search(LIST<float> query_vector, INT k) SYNTAX v3 {
+  MapAccum<Vertex, Float> @@distances;
+  v = vectorSearch({Event.emb}, query_vector, k, {distance_map: @@distances});
+  PRINT v AS results;
+  PRINT @@distances AS distances;
+}
+
+INSTALL QUERY event_vector_search

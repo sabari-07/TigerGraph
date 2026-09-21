@@ -1,0 +1,38 @@
+// STEP 1 — create the graph schema on TigerGraph Savanna.
+//
+// Prerequisite: create an empty graph named AgenticGraphRAG in Savanna
+// (Design Schema -> graph selector -> create), then run this in the Query
+// Editor with that graph selected. Adds 6 vertex types + 9 edge types.
+
+USE GRAPH AgenticGraphRAG
+
+CREATE SCHEMA_CHANGE JOB add_agentic_schema FOR GRAPH AgenticGraphRAG {
+  ADD VERTEX Event (
+      PRIMARY_ID id STRING,
+      title STRING, url STRING, event_name STRING,
+      competitors INT, nations INT, year INT, season STRING,
+      date_raw STRING, win_value STRING
+  ) WITH primary_id_as_attribute="true";
+  ADD VERTEX Games (PRIMARY_ID id STRING, label STRING, year INT, season STRING)
+      WITH primary_id_as_attribute="true";
+  ADD VERTEX Venue (PRIMARY_ID id STRING, name STRING)
+      WITH primary_id_as_attribute="true";
+  ADD VERTEX Athlete (PRIMARY_ID id STRING, name STRING)
+      WITH primary_id_as_attribute="true";
+  ADD VERTEX NOC (PRIMARY_ID id STRING, code STRING)
+      WITH primary_id_as_attribute="true";
+  ADD VERTEX Sport (PRIMARY_ID id STRING, name STRING)
+      WITH primary_id_as_attribute="true";
+
+  ADD DIRECTED EDGE PART_OF (FROM Event, TO Games);
+  ADD DIRECTED EDGE HELD_AT (FROM Event, TO Venue);
+  ADD DIRECTED EDGE HAS_SPORT (FROM Event, TO Sport);
+  ADD DIRECTED EDGE WON_GOLD (FROM Event, TO Athlete);
+  ADD DIRECTED EDGE WON_SILVER (FROM Event, TO Athlete);
+  ADD DIRECTED EDGE WON_BRONZE (FROM Event, TO Athlete);
+  ADD DIRECTED EDGE REPRESENTS (FROM Athlete, TO NOC);
+  ADD DIRECTED EDGE NEXT (FROM Games, TO Games);
+  ADD DIRECTED EDGE PREV (FROM Games, TO Games);
+}
+
+RUN SCHEMA_CHANGE JOB add_agentic_schema
